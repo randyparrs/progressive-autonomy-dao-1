@@ -1,10 +1,10 @@
 # Progressive Autonomy DAO
 
-A DAO experiment built on GenLayer where the AI agent gradually takes over decision-making as it proves itself trustworthy.
+A DAO experiment built on GenLayer where the AI agent gradually takes over decision making as it proves itself trustworthy.
 
 ## What is this?
 
-I wanted to build something that shows off what GenLayer can actually do differently from regular smart contracts. The idea is simple — instead of humans always voting on everything, the DAO starts with full human control and slowly gives the AI more power based on how well it performs.
+I wanted to build something that shows off what GenLayer can actually do differently from regular smart contracts. The idea is simple  instead of humans always voting on everything, the DAO starts with full human control and slowly gives the AI more power based on how well it performs.
 
 The AI starts at level 0 (just watching) and can reach level 3 (full autonomy) if the community keeps rating its decisions as correct.
 
@@ -19,7 +19,7 @@ The AI starts at level 0 (just watching) and can reach level 3 (full autonomy) i
 
 ## How it works
 
-When someone submits a proposal, the contract calls an LLM to evaluate it. Multiple validators on the GenLayer network independently run the same evaluation and have to agree on the result — that's the Equivalence Principle in action.
+When someone submits a proposal, the contract calls an LLM to evaluate it. Multiple validators on the GenLayer network independently run the same evaluation and have to agree on the result that's the Equivalence Principle in action.
 
 After a proposal resolves, members can rate whether the AI made a good call. Good ratings push the AI toward higher autonomy, bad ones push it back down.
 
