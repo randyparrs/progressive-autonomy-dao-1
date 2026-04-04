@@ -45,7 +45,7 @@ After a proposal resolves, members can rate whether the AI made a good call. Goo
 - `rate_ai_decision(proposal_id, was_correct)`  rate the AI
 - `get_dao_summary()`  see current autonomy level and AI score
 - `get_proposal(proposal_id)`  check a specific proposal
-- `add_member(address)` nadd a new DAO member
+- `add_member(address)` add a new DAO member
 
 ## Notes
 
