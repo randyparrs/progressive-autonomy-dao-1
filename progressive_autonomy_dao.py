@@ -211,7 +211,8 @@ class ProgressiveAutonomyDAO(gl.Contract):
 
         total = int(self.ai_total_decisions) + 1
         correct = int(self.ai_correct_decisions) + (1 if was_correct else 0)
-        new_score = int((correct / total) * 100)
+        new_score = (correct * 100) // total
+
 
         self.ai_total_decisions = u256(total)
         self.ai_correct_decisions = u256(correct)
