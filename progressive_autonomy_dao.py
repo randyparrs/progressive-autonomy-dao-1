@@ -15,8 +15,8 @@
 #    3 - AI_AUTONOMOUS : AI decides fully, community audits
 #
 #  Requirements met:
-#    ✅ Optimistic Democracy consensus
-#    ✅ Equivalence Principle (gl.vm.run_nondet_unsafe)
+#     Optimistic Democracy consensus
+#     Equivalence Principle (gl.vm.run_nondet_unsafe)
 # ============================================================
 
 import json
@@ -249,7 +249,7 @@ class ProgressiveAutonomyDAO(gl.Contract):
             if score < thresholds[current] - 10:
                 self.autonomy_level = u256(current - 1)
 
-    # ── AI Evaluation — Equivalence Principle ✅ ──────────
+    # ── AI Evaluation — Equivalence Principle  ──────────
 
     def _ai_evaluate_proposal(self, title: str, description: str) -> tuple:
         """
