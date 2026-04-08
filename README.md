@@ -47,6 +47,4 @@ After a proposal resolves, members can rate whether the AI made a good call. Goo
 - `get_proposal(proposal_id)`  check a specific proposal
 - `add_member(address)` add a new DAO member
 
-## Notes
 
-This is a hackathon project for the GenLayer Incentivized Builder Program, AI Governance track. The contract starts at AI_ASSISTED level so you can see the AI evaluation working right away.
