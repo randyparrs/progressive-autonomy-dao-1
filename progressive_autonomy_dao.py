@@ -1,8 +1,8 @@
 # { "Depends": "py-genlayer:test" }
 
 import json
-from genlayer import *
 from dataclasses import dataclass
+from genlayer import *
 
 
 @allow_storage
@@ -14,13 +14,19 @@ class Proposal:
     proposer: Address
     votes_for: u256
     votes_against: u256
-    ai_recommendation: str
-    ai_confidence: u256
-    status: str
+    ai_recommendation: str  # "pending" | "APPROVE" | "REJECT"
+    ai_confidence: u256     # 0-100
+    status: str             # "pending" | "approved" | "rejected" | "ai_decided"
     human_overridden: bool
 
 
 class ProgressiveAutonomyDAO(gl.Contract):
+
+    # Autonomy levels:
+    # 0 - HUMAN_ONLY    : all decisions require human voting
+    # 1 - AI_ASSISTED   : AI recommends, humans approve or veto
+    # 2 - AI_SUPERVISED : AI decides, humans can override
+    # 3 - AI_AUTONOMOUS : AI decides fully, community audits
 
     owner: Address
     autonomy_level: u256
@@ -30,7 +36,7 @@ class ProgressiveAutonomyDAO(gl.Contract):
     proposal_count: u256
     proposals: DynArray[Proposal]
     members: DynArray[Address]
-    voted_log: DynArray[str]
+    voted_log: DynArray[str]  # "proposal_id:address" flat list
 
     def __init__(self, owner_address: Address):
         self.owner = owner_address
@@ -75,7 +81,7 @@ class ProgressiveAutonomyDAO(gl.Contract):
         names = {0: "HUMAN_ONLY", 1: "AI_ASSISTED", 2: "AI_SUPERVISED", 3: "AI_AUTONOMOUS"}
         level_name = names.get(int(self.autonomy_level), "UNKNOWN")
         return (
-            f"=== Progressive Autonomy DAO ===\n"
+            f"Progressive Autonomy DAO\n"
             f"Autonomy Level: {level_name} ({int(self.autonomy_level)}/3)\n"
             f"AI Score: {int(self.ai_community_score)}/100\n"
             f"Members: {len(self.members)}\n"
@@ -244,3 +250,5 @@ Consider: community benefit, feasibility, risks, decentralization alignment."""
         raw = gl.vm.run_nondet_unsafe(leader_fn, validator_fn)
         data = json.loads(raw)
         return data["recommendation"], data["confidence"]
+
+     
