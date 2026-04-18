@@ -38,6 +38,8 @@ After a proposal resolves, members can rate whether the AI made a good call. Goo
 4. Deploy with your address as `owner_address`
 5. Call `submit_proposal` and watch the AI evaluate it
 
+Note: the contract in this repository uses the Address type in the constructor as required by genvm-lint. When deploying in GenLayer Studio use a version that receives str in the constructor and converts internally with Address(owner_address) since Studio requires primitive types to parse the contract schema correctly.
+
 ## Functions
 
 - `submit_proposal(title, description)`  submit a new proposal
